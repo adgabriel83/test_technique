@@ -1,0 +1,38 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate', 'id': 'form_materiel'}}) }}
+    <div class="alert alert-danger visually-hidden" id="materiel_error"></div>
+    {{ form_row(form.name, {attr: {placeholder: 'Nom du matériel'}, label: 'Nom : '}) }}
+    {{ form_row(form.price, {attr: {placeholder: 'Prix du matériel en euros', value: materiel.price/100}, label: 'Prix : '}) }}
+    <button type="submit" class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}
+<script>
+window.onload = function() {
+    let form = document.getElementById('form_materiel');
+    form.addEventListener('submit', validateFormulaireMateriel);
+
+}
+function validateFormulaireMateriel(e) {
+    let divError = document.getElementById('materiel_error');
+    divError.innerHTML = '';
+    divError.classList.add('visually-hidden');
+    let isValid = false;
+    let strError = '';
+    let nom = document.getElementById('materiel_name').value;
+    if(!nom) {
+        strError += '<div>Veuillez saisir le nom du matériel</div>';
+    }
+    let prix = document.getElementById('materiel_price').value;
+
+    if(!prix) {
+        strError += '<div>Veuillez saisir le prix du matériel</div>';
+    } else if(prix < 1) {
+        strError += '<div>Le prix du matériel doit être supérieur à 0</div>';
+    }
+    if(strError != '') {
+        divError.classList.remove('visually-hidden');
+        divError.innerHTML = strError;
+        e.preventDefault();
+    } else {
+        document.getElementById('materiel_price').value = document.getElementById('materiel_price').value*100; // On convertit en centime d'euros ici plutôt que de gérer côté controller
+    }
+}
+</script>

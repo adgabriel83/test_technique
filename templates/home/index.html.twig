@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue!{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h1>Liste des liens disponibles </h1>
+    <h2>Client</h2>
+    <ul>
+        <li><a href="{{ path('app_client_filtre', {'nbMateriel': 30, 'montantMateriel': 30000}) }}">Voir les clients avec plus de 30 matériels dont le matériel vendu est supérieur à 30k euros</a></li>
+        <li><a href="{{ path('app_client_index') }}">Liste des clients</a></li>
+        <li><a href="{{ path('app_client_new') }}">Ajouter un client</a></li>
+    </ul>
+    <h2>Lien Client / Matériel</h2>
+    <ul>
+        <li><a href="{{ path('app_lien_new') }}">Ajouter un lien client/matériel</a></li>
+        <li><a href="{{ path('app_lien_index') }}">Liste des liens</a></li>
+    </ul>
+    <h2>Matériel</h2>
+    <ul>
+        <li><a href="{{ path('app_materiel_index') }}">Liste des matériels</a></li>
+        <li><a href="{{ path('app_materiel_new') }}">Ajouter un matériel</a></li>
+    </ul>
+</div>
+{% endblock %}

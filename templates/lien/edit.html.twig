@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification d'un lien{% endblock %}
+
+{% block body %}
+    <h1>Modification d'un lien</h1>
+
+    {{ include('lien/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a href="{{ path('app_lien_index') }}" class="btn btn-secondary">Retour à la liste des liens</a>
+
+    {{ include('lien/_delete_form.html.twig') }}
+{% endblock %}

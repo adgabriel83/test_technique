@@ -1,0 +1,6 @@
+{{ form_start(form) }}
+    {{ form_row(form.quantity, {attr: {placeholder: 'Quantité'}, label: 'Quantité : '}) }}
+    {{ form_row(form.client, {label: 'Client : '}) }}
+    {{ form_row(form.materiel, {label: 'Matériel : '}) }}
+    <button type="submit" class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

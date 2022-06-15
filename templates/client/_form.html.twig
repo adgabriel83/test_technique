@@ -1,0 +1,5 @@
+{{ form_start(form) }}
+    {{ form_row(form.first_name, {attr: {placeholder: 'Prénom du client'}, label: 'Prénom : '}) }}
+    {{ form_row(form.last_name, {attr: {placeholder: 'Nom du client'}, label: 'Nom : '}) }}
+    <button type="submit" class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des liens{% endblock %}
+
+{% block body %}
+    <h1>Liste des liens</h1>
+
+    <a href="{{ path('app_lien_new') }}" class="btn btn-success">Créer un nouveau lien</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Quantité</th>
+                <th>Client</th>
+                <th>Matériel</th>
+                <th>Montant</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for lien in liens %}
+            <tr>
+                <td>{{ lien.quantity }}</td>
+                <td>{{ lien.client }}</td>
+                <td>{{ lien.materiel }}</td>
+                <td>{{ lien.montantTotal|number_format(2, ' € ', ' ') }}</td>
+                <td>
+                    <a href="{{ path('app_lien_show', {'id': lien.id}) }}" class="btn btn-outline-secondary"><i class="bi bi-eye"></i> Voir</a>
+                    <a href="{{ path('app_lien_edit', {'id': lien.id}) }}" class="btn btn-outline-secondary"><i class="bi bi-pencil"></i> Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucun lien trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

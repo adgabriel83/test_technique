@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification d'un matériel{% endblock %}
+
+{% block body %}
+    <h1>Modification d'un matériel</h1>
+
+    {{ include('materiel/_form.html.twig', {'button_label': 'Modifier'}) }}
+    {{ include('materiel/_delete_form.html.twig') }}
+
+    <a href="{{ path('app_materiel_index') }}" class="btn btn-secondary" >Retour à la liste des matériels</a>
+
+{% endblock %}

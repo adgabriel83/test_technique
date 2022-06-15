@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des matériels{% endblock %}
+
+{% block body %}
+    <h1>Liste des matériels</h1>
+
+    <a href="{{ path('app_materiel_new') }}" class="btn btn-primary">Créer un nouveau matériel</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Identifiant</th>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for materiel in materiels %}
+            <tr>
+                <td>{{ materiel.id }}</td>
+                <td>{{ materiel.name }}</td>
+                <td>{{ materiel.price }}</td>
+                <td>
+                    <a href="{{ path('app_materiel_show', {'id': materiel.id}) }}" class="btn btn-outline-secondary"><i class="bi bi-eye"></i> Voir</a>
+                    <a href="{{ path('app_materiel_edit', {'id': materiel.id}) }}" class="btn btn-outline-secondary"><i class="bi bi-pencil"></i> Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucun matériel trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
